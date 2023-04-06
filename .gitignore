@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+/test
+
+>>>>>>> 8e3f140 (project added)
 # Logs
 logs
 *.log
@@ -101,4 +106,8 @@ dist
 .dynamodb/
 
 # TernJS port file
+<<<<<<< HEAD
 .tern-port
+=======
+.tern-port
+>>>>>>> 8e3f140 (project added)

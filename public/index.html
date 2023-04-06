@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>4P-Chat</title>
+    <meta charset="utf-8">
+    <link rel="icon" href="https://chatty-ecru.vercel.app/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="./js/data.js" defer></script>
+    <script type="text/javascript" src="https://cdn.tailwindcss.com"></script>
+    <link type="text/css" href="./css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="flex flex-row-reverse max-w-2xl mx-auto">
+        <div class="flex flex-col gap-4 rounded-md bg-gray-900 p-3 h-full mt-20">
+            <div class="rounded-full w-10 h-10 bg-neutral-600 cursor-pointer">
+                <img src="./icons/trash.svg" class="mx-auto h-full p-[6px]" alt="delete avatar">
+            </div>
+            <div class="rounded-full w-10 h-10 bg-violet-600 cursor-pointer"></div>
+            <div class="rounded-full w-10 h-10 bg-cyan-600 cursor-pointer">
+                <img src="./icons/screenshot.svg" class="mx-auto h-full p-[5px]" alt="screenshot avatar">
+            </div>
+            <div class="rounded-full w-10 h-10 bg-teal-700 cursor-pointer">
+                <img src="./icons/headphones.svg" class="mx-auto h-full p-[6px]" alt="audio avatar">
+            </div>
+            <div class="rounded-full w-10 h-10 bg-indigo-600 cursor-pointer">
+                <img src="./icons/arrows-maximize.svg" class="mx-auto h-full p-[7px]" alt="fullscreen avatar">
+            </div>
+        </div>
+        <div class="flex flex-col pt-4 w-full px-2 items-center gap-2">
+            <div>
+                <h1 class="text-2xl font-bold w-full text-center">4P-Chat</h1>
+                <p class="text-sm italic">Powered by gpt-3.5-turbo</p>
+            </div>
+            <div class="full-box h-[500px] w-full bg-gray-900 rounded-md p-4 overflow-y-auto flex flex-col gap-4">
+                <div class="chat-box flex flex-col gap-2">
+                    <div class="chat chat-start justify-end">
+                        <div class="chat-image avatar">
+                            <div class="w-10 rounded-full">
+                                <img src="https://ui-avatars.com/api/?name=B" alt="assistant avatar">
+                            </div>
+                        </div>
+                        <div class="chat-header">Bot</div>
+                        <div class="chat-bubble chat-bubble-primary">Hello, I'm ChatGPT Ask me anything!</div>
+                    </div>
+                </div>
+            </div>
+            <form class="flex w-full rounded-md gap-4 bg-gray-900 p-4">
+                <input type="text" name="message" class="user-input input input-bordered w-full">
+                <button type="submit" class="btn btn-accent bg-teal-500">Send</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
