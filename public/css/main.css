@@ -4,8 +4,8 @@ html {
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     word-break: normal;
-    scroll-behavior: smooth;
-    -webkit-tap-highlight-color: transparent
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth
 }
 
 :root,[data-theme] {
@@ -165,7 +165,8 @@ html {
 
 .chat-image {
     grid-row: span 2 / span 2;
-    align-self: flex-end
+    align-self: flex-end;
+    margin-bottom: 20px
 }
 
 .chat-header {
@@ -174,14 +175,17 @@ html {
     line-height: 1.25rem
 }
 
+.chat-footer {
+    justify-content: space-between;
+}
+
 .chat-bubble {
     position: relative;
     display: block;
     width: -moz-fit-content;
     width: fit-content;
     padding: .5rem 1rem;
-    max-width: 90%;
-    border-radius: var(--rounded-box, 1rem);
+    border-radius: 0.5rem 0.5rem 0 0.5rem;
     min-height: 2.75rem;
     min-width: 2.75rem;
     --tw-bg-opacity: 1;
@@ -344,8 +348,11 @@ html {
     color: hsl(var(--sc) / var(--tw-text-opacity))
 }
 
-.drawer-toggle:focus-visible~.drawer-content .drawer-button.btn-accent {
-    outline: 2px solid hsl(var(--a))
+.chat-relative-time {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
 }
 
 .input[list]::-webkit-calendar-picker-indicator {
@@ -358,5 +365,5 @@ html {
 
 .input:focus {
     outline: 2px solid hsla(var(--bc) / .2);
-    outline-offset: 2px
+    outline-offset: 2px;
 }

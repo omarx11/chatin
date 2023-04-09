@@ -39,8 +39,6 @@ function setUserMessage(message) {
 }
 
 function setBotMessage(message) {
-    console.log(message)
-
     // Check if the content has code block
     // ...
 
@@ -66,14 +64,17 @@ async function afterSend() {
     // if user message contains string
     if (messages !== undefined && messages !== "") {
         setUserMessage(messages);
-        setTimeout(() => {
-            setIsTyping(true);
-        }, 500);
+        setIsTyping(true);
         const response = await getBotMessage(messages);
-        const result = response.result.message.content;
-        console.log(response);
         setIsTyping(false);
-        setBotMessage(result);
+        console.log(response);
+        setBotMessage(response.chat);
+
+        // play chat audio
+        setTimeout(() => {
+            new Audio(`../audio/chat-${response.chatDate}.mp3`).play();
+            // new Audio(`../audio/chat-gpt.mp3`).play();
+        }, 500);
     }
 }
 

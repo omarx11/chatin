@@ -1,53 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>4P-Chat</title>
-    <meta charset="utf-8">
-    <link rel="icon" href="https://chatty-ecru.vercel.app/favicon.png">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script type="text/javascript" src="./js/data.js" defer></script>
-    <script type="text/javascript" src="https://cdn.tailwindcss.com"></script>
-    <link type="text/css" href="./css/style.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="http://127.0.0.1:5000/favicon.ico">
+    <title>Chatin</title>
+    <script type="text/javascript" src="./js/chat-data.js" defer></script>
+    <script type="text/javascript" src="./js/tailwindcss.js"></script>
+    <script type="text/javascript" src="./js/flowbite.js"></script>
+    <link type="text/css" href="./css/flowbite.min.css" rel="stylesheet">
+    <link type="text/css" href="./css/main.css" rel="stylesheet">
 </head>
 <body>
     <div class="flex flex-row-reverse max-w-2xl mx-auto">
         <div class="flex flex-col gap-4 rounded-md bg-gray-900 p-3 h-full mt-20">
-            <div class="rounded-full w-10 h-10 bg-neutral-600 cursor-pointer">
-                <img src="./icons/trash.svg" class="mx-auto h-full p-[6px]" alt="delete avatar">
+            <div data-tooltip-target="tooltip-settings" data-tooltip-placement="left" class="rounded-full w-10 h-10 bg-violet-600 cursor-pointer">
+                <img src="./icons/settings.svg" class="mx-auto h-full p-[5px]" alt="settings avatar">
             </div>
-            <div class="rounded-full w-10 h-10 bg-violet-600 cursor-pointer"></div>
-            <div class="rounded-full w-10 h-10 bg-cyan-600 cursor-pointer">
+            <div id="tooltip-settings" role="tooltip" class="text-1xl !mr-1 font-bold absolute z-10 invisible inline-block px-3 py-2 rounded-lg opacity-0 tooltip dark:bg-gray-700">
+                Chat settings
+                <div class="tooltip-arrow" data-popper-arrow></div>
+            </div>
+
+            <div data-tooltip-target="tooltip-screenshot" data-tooltip-placement="left" class="rounded-full w-10 h-10 bg-cyan-600 cursor-pointer">
                 <img src="./icons/screenshot.svg" class="mx-auto h-full p-[5px]" alt="screenshot avatar">
             </div>
-            <div class="rounded-full w-10 h-10 bg-teal-700 cursor-pointer">
-                <img src="./icons/headphones.svg" class="mx-auto h-full p-[6px]" alt="audio avatar">
+            <div id="tooltip-screenshot" role="tooltip" class="text-1xl !mr-1 font-bold absolute z-10 invisible inline-block px-3 py-2 rounded-lg opacity-0 tooltip dark:bg-gray-700">
+                Screenshot
+                <div class="tooltip-arrow" data-popper-arrow></div>
             </div>
-            <div class="rounded-full w-10 h-10 bg-indigo-600 cursor-pointer">
+
+            <div data-tooltip-target="tooltip-volume" data-tooltip-placement="left" class="rounded-full w-10 h-10 bg-teal-700 cursor-pointer">
+                <img src="./icons/volume.svg" class="mx-auto h-full p-[6px]" alt="audio avatar">
+            </div>
+            <div id="tooltip-volume" role="tooltip" class="text-1xl !mr-1 font-bold absolute z-10 invisible inline-block px-3 py-2 rounded-lg opacity-0 tooltip dark:bg-gray-700">
+                Mute Chat
+                <div class="tooltip-arrow" data-popper-arrow></div>
+            </div>
+
+            <div data-tooltip-target="tooltip-donate" data-tooltip-placement="left" class="rounded-full w-10 h-10 bg-pink-700">
+                <a href="https://ko-fi.com/omar11" target="_blank" rel="noopener noreferrer">
+                    <img src="./icons/heart.svg" class="mx-auto h-full p-[5px]" alt="audio avatar">
+                </a>
+            </div>
+            <div id="tooltip-donate" role="tooltip" class="text-1xl !mr-1 font-bold absolute z-10 invisible inline-block px-3 py-2 rounded-lg opacity-0 tooltip dark:bg-gray-700">
+                Donate me
+                <div class="tooltip-arrow" data-popper-arrow></div>
+            </div>
+
+            <div data-tooltip-target="tooltip-clear" data-tooltip-placement="left" class="rounded-full w-10 h-10 bg-neutral-600 cursor-pointer">
+                <img src="./icons/trash.svg" class="mx-auto h-full p-[6px]" alt="delete avatar">
+            </div>
+            <div id="tooltip-clear" role="tooltip" class="text-1xl !mr-1 font-bold absolute z-10 invisible inline-block px-3 py-2 rounded-lg opacity-0 tooltip dark:bg-gray-700">
+                Clear chat history
+                <div class="tooltip-arrow" data-popper-arrow></div>
+            </div>
+
+            <div data-tooltip-target="tooltip-fullscreen" data-tooltip-placement="left" class="rounded-full w-10 h-10 bg-indigo-600 cursor-pointer">
                 <img src="./icons/arrows-maximize.svg" class="mx-auto h-full p-[7px]" alt="fullscreen avatar">
+            </div>
+            <div id="tooltip-fullscreen" role="tooltip" class="text-1xl !mr-1 font-bold absolute z-10 invisible inline-block px-3 py-2 rounded-lg opacity-0 tooltip dark:bg-gray-700">
+                Full screen
+                <div class="tooltip-arrow" data-popper-arrow></div>
             </div>
         </div>
         <div class="flex flex-col pt-4 w-full px-2 items-center gap-2">
             <div>
-                <h1 class="text-2xl font-bold w-full text-center">4P-Chat</h1>
+                <h1 class="text-2xl font-bold w-full text-center">Chatin</h1>
                 <p class="text-sm italic">Powered by gpt-3.5-turbo</p>
             </div>
             <div class="full-box h-[500px] w-full bg-gray-900 rounded-md p-4 overflow-y-auto flex flex-col gap-4">
                 <div class="chat-box flex flex-col gap-2">
+
+
                     <div class="chat chat-start justify-end">
                         <div class="chat-image avatar">
                             <div class="w-10 rounded-full">
-                                <img src="https://ui-avatars.com/api/?name=B" alt="assistant avatar">
+                                <img src="https://ui-avatars.com/api/?name=AI" alt="assistant avatar">
                             </div>
                         </div>
-                        <div class="chat-header">Bot</div>
-                        <div class="chat-bubble chat-bubble-primary">Hello, I'm ChatGPT Ask me anything!</div>
+                        <div class="max-w-[92%]">
+                            <div class="chat-header">Bot</div>
+                            <div class="chat-bubble chat-bubble-primary">Hello, I'm ChatGPT Ask me anything! Hello, I'm ChatGPT Ask me anything! Hello, I'm ChatGPT Ask me anything! Hello, I'm ChatGPT Ask me anything! Hello, I'm ChatGPT Ask me anything! Hello, I'm ChatGPT Ask me anything! Hello, I'm ChatGPT Ask me anything! Hello, I'm ChatGPT Ask me anything! Hello, I'm ChatGPT Ask me anything! Hello, I'm ChatGPT Ask me anything!</div>
+                            <div class="chat-footer flex items-center w-full">
+                                <p class="chat-relative-time text-sm">18 minutes ago</p>
+                                <svg aria-hidden="true" class="w-[18px] h-[18px] cursor-pointer" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M7 9a2 2 0 012-2h6a2 2 0 012 2v6a2 2 0 01-2 2H9a2 2 0 01-2-2V9z"></path><path d="M5 3a2 2 0 00-2 2v6a2 2 0 002 2V5h8a2 2 0 00-2-2H5z"></path></svg>
+                            </div>
+                        </div>
                     </div>
+
+                    <div class="chat chat-end justify-end">
+                        <div class="chat-image avatar">
+                            <div class="w-10 rounded-full">
+                                <img src="https://ui-avatars.com/api/?name=Me" alt="user avatar">
+                            </div>
+                        </div>
+                        <div class="chat-header">Me</div>
+                        <div class="chat-bubble chat-bubble-secondary">hello bot, what is your name?!</div>
+                    </div>
+
+                    <div class="chat chat-start justify-end">
+                        <div class="chat-image avatar">
+                            <div class="w-10 rounded-full">
+                                <img src="https://ui-avatars.com/api/?name=AI" alt="assistant avatar">
+                            </div>
+                        </div>
+                        <div class="max-w-[92%]">
+                            <div class="chat-header">Bot</div>
+                            <div class="chat-bubble chat-bubble-primary">Hi there, how can i help you.</div>
+                            <div class="chat-footer flex items-center w-full">
+                                <p class="chat-relative-time text-sm">18 minutes ago</p>
+                                <svg aria-hidden="true" class="w-[18px] h-[18px] cursor-pointer" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M7 9a2 2 0 012-2h6a2 2 0 012 2v6a2 2 0 01-2 2H9a2 2 0 01-2-2V9z"></path><path d="M5 3a2 2 0 00-2 2v6a2 2 0 002 2V5h8a2 2 0 00-2-2H5z"></path></svg>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
             <form class="flex w-full rounded-md gap-4 bg-gray-900 p-4">
                 <input type="text" name="message" class="user-input input input-bordered w-full">
                 <button type="submit" class="btn btn-accent bg-teal-500">Send</button>
             </form>
+
+            <div id="toast-success" class="flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800" role="alert">
+                <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 rounded-lg dark:bg-green-700 dark:text-green-200">
+                    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                    <span class="sr-only">Check icon</span>
+                </div>
+                <div class="ml-3 text-md font-normal">Text successfully copied.</div>
+                <button type="button" class="ml-auto -mx-1.5 -my-1.5 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700" data-dismiss-target="#toast-success" aria-label="Close">
+                    <span class="sr-only">Close</span>
+                    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                </button>
+            </div>
+            <footer class="w-full bg-white rounded-lg shadow dark:bg-gray-800">
+                <div class="sm:flex sm:items-center sm:justify-between px-4 py-5">
+                    <div class="flex items-center space-x-2">
+                        <svg class="w-5 h-5" fill="#aaa" viewBox="0 0 200 200"><path d="M56.89001,113.90645c0,5.56258 -8.59671,11.12516 -22.50316,11.12516c-10.87231,0 -18.96334,3.53982 -18.96334,7.07965c0,4.29836 12.89507,7.83818 12.89507,13.40076c0,3.28698 -5.05689,6.8268 -5.05689,10.61947c0,0.75853 0.25284,1.51707 1.01138,2.2756c4.04551,4.04551 15.67636,4.5512 26.54867,13.14791c12.38938,9.86094 33.62832,15.17067 54.61441,15.17067c20.4804,0 35.90392,-5.30973 50.06321,-12.38938c0.25284,0 2.02276,-1.01138 3.53982,-1.01138c2.52845,0 3.79267,2.2756 3.79267,4.80405c0,3.79267 3.28698,5.30973 6.06827,5.30973c3.28698,0 6.32111,-2.2756 6.32111,-5.56258c0,-2.52845 -2.02276,-5.56258 -5.56258,-6.32111c-2.02276,-0.50569 -3.28698,-1.51707 -3.28698,-2.78129c0,-1.01138 0.75853,-2.2756 4.29836,-4.80405c3.79267,-2.78129 4.80405,-4.29836 4.80405,-7.58534c0,-4.80405 -1.76991,-15.42351 -8.59671,-22.25032c-8.34387,-8.34387 -4.5512,-17.69912 -13.6536,-17.69912h-31.60556c-3.79267,0 -7.33249,-3.53982 -11.63085,-3.53982c-3.03413,0 -5.56258,1.76991 -5.56258,4.80405c0,3.03413 2.2756,4.80405 4.80405,4.80405c2.2756,0 3.03413,-1.26422 5.56258,-2.02276c0.75853,-0.25284 1.26422,-0.25284 1.51707,-0.25284c2.52845,0 3.28698,1.51707 3.28698,3.53982c0,5.81542 -7.33249,12.89507 -14.41214,12.89507c-8.34387,0 -15.42351,-10.36662 -15.42351,-21.99747c0,-16.94058 -14.91783,-14.15929 -15.17067,-19.46903c-0.25284,-5.05689 14.41214,-4.04551 17.44627,-17.95196c1.51707,-7.07965 6.8268,-13.90645 18.2048,-13.90645c9.35525,0 17.19343,4.5512 17.19343,8.09102c0,0.50569 -0.25284,2.2756 -2.2756,2.2756c-2.2756,0 -2.78129,-2.52845 -5.05689,-2.52845c-0.75853,0 -1.76991,0.25284 -1.76991,1.51707c0,0.75853 0.50569,1.76991 1.01138,3.03413c0.50569,1.51707 1.51707,3.28698 2.2756,7.33249h42.73072c13.14791,0 35.65107,-4.5512 35.65107,-10.87231c0,-7.58534 -32.86979,-8.84956 -32.86979,-18.71049c0,-4.80405 7.58534,-8.59671 7.58534,-11.88369c0,-2.2756 -3.28698,-5.05689 -7.58534,-7.83818c-14.91783,-9.60809 -33.37547,-20.4804 -61.69406,-20.4804c-36.66245,0 -64.47535,18.2048 -70.29077,28.57143c-4.29836,7.58534 -14.91783,8.84956 -14.91783,13.14791c0,6.32111 20.98609,8.34387 20.98609,18.2048c0,4.80405 -5.56258,9.60809 -18.2048,14.41214c-8.09102,3.03413 -18.45765,4.04551 -18.45765,6.57396c0,5.56258 52.33881,5.81542 52.33881,19.72187zM150.69532,99.74716c5.30973,0 8.59671,-1.01138 8.59671,-4.80405c0,-3.28698 2.78129,-4.04551 2.78129,-5.56258c0,-1.26422 -1.76991,-2.02276 -6.32111,-2.02276c-9.35525,0 -22.25032,3.03413 -22.25032,5.81542c0,2.02276 6.32111,6.57396 17.19343,6.57396zM165.61315,122.75601c0,2.78129 1.01138,4.80405 2.78129,4.80405c3.79267,0 16.43489,-8.34387 16.43489,-13.40076c0,-2.52845 -3.53982,-4.5512 -7.33249,-4.5512c-7.83818,0 -11.88369,7.83818 -11.88369,13.14791zM31.60556,116.18205c0,2.02276 0.50569,2.78129 3.79267,2.78129c5.81542,0 13.90645,-2.52845 13.90645,-5.56258c0,-3.79267 -12.13654,-7.07965 -16.43489,-7.07965c-1.76991,0 -4.5512,0.50569 -4.5512,2.2756c0,1.76991 3.28698,2.78129 3.28698,7.58534zM54.10872,72.1871c0,-3.03413 8.59671,-5.81542 13.40076,-5.81542c4.5512,0 7.07965,2.52845 7.07965,5.05689c0,3.03413 -3.79267,4.04551 -10.11378,4.04551c-9.60809,0 -10.36662,-2.2756 -10.36662,-3.28698zM165.86599,73.70417c0,-3.03413 2.02276,-5.30973 7.83818,-5.30973c5.81542,0 12.89507,2.2756 12.89507,4.29836c0,2.02276 -8.84956,4.80405 -14.66498,4.80405c-5.81542,0 -6.06827,-2.78129 -6.06827,-3.79267zM39.94943,155.37295c0,-1.01138 0.75853,-1.76991 1.76991,-1.76991c1.51707,0 4.29836,1.51707 10.61947,2.78129c8.09102,1.51707 13.40076,1.01138 13.40076,4.04551c0,2.2756 -3.28698,3.28698 -5.81542,3.28698c-5.05689,0 -19.97472,-3.79267 -19.97472,-8.34387zM9.1024,56.2579c4.04551,0 5.56258,-2.2756 5.56258,-5.05689c0,-1.26422 -0.25284,-4.04551 -4.29836,-4.04551c-4.04551,0 -10.36662,2.78129 -10.36662,4.80405c0,2.02276 5.05689,4.29836 9.1024,4.29836zM85.96713,95.19595c0,1.51707 1.76991,4.29836 6.57396,4.29836c1.51707,0 7.58534,-0.25284 7.58534,-3.79267c0,-3.28698 -4.80405,-3.79267 -7.07965,-3.79267c-3.79267,0 -7.07965,1.51707 -7.07965,3.28698zM160.30341,36.03034c1.76991,0 6.57396,0.25284 6.57396,3.53982c0,2.52845 -3.03413,3.79267 -7.33249,3.79267c-1.76991,0 -6.8268,-0.25284 -6.8268,-3.28698c0,-2.52845 3.28698,-4.04551 7.58534,-4.04551z" fill-rule="nonzero"></path></svg>
+                        <span class="text-sm sm:text-center dark:text-gray-400">2023 <a href="https://omar11.sa/" class="hover:underline">omar11.sa</a>. No rights reserved.</span>
+                    </div>
+                    <div class="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
+                        <a href="https://twitter.com/dis_x0" class="text-gray-500 dark:hover:text-white">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" /></svg>
+                            <span class="sr-only">Twitter page</span>
+                        </a>
+                        <a href="https://github.com/omarx11/chatin" class="text-gray-500 dark:hover:text-white">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" /></svg>
+                            <span class="sr-only">GitHub account</span>
+                        </a>
+                        <a href="https://chat.omar11.sa/" class="text-gray-500 dark:hover:text-white">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c5.51 0 10-4.48 10-10S17.51 2 12 2zm6.605 4.61a8.502 8.502 0 011.93 5.314c-.281-.054-3.101-.629-5.943-.271-.065-.141-.12-.293-.184-.445a25.416 25.416 0 00-.564-1.236c3.145-1.28 4.577-3.124 4.761-3.362zM12 3.475c2.17 0 4.154.813 5.662 2.148-.152.216-1.443 1.941-4.48 3.08-1.399-2.57-2.95-4.675-3.189-5A8.687 8.687 0 0112 3.475zm-3.633.803a53.896 53.896 0 013.167 4.935c-3.992 1.063-7.517 1.04-7.896 1.04a8.581 8.581 0 014.729-5.975zM3.453 12.01v-.26c.37.01 4.512.065 8.775-1.215.25.477.477.965.694 1.453-.109.033-.228.065-.336.098-4.404 1.42-6.747 5.303-6.942 5.629a8.522 8.522 0 01-2.19-5.705zM12 20.547a8.482 8.482 0 01-5.239-1.8c.152-.315 1.888-3.656 6.703-5.337.022-.01.033-.01.054-.022a35.318 35.318 0 011.823 6.475 8.4 8.4 0 01-3.341.684zm4.761-1.465c-.086-.52-.542-3.015-1.659-6.084 2.679-.423 5.022.271 5.314.369a8.468 8.468 0 01-3.655 5.715z" clip-rule="evenodd" /></svg>
+                            <span class="sr-only">Website link</span>
+                        </a>
+                    </div>
+                </div>
+            </footer>
         </div>
     </div>
 </body>
